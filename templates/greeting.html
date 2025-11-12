@@ -1,38 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Airbnb - Home</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>Welcome to Airbnb</h1>
-  </header>
+import pytest
+from app import app
 
-  <section class="hotel-list">
-    <div class="hotel-card" onclick="location.href='hotel1.html'">
-      <img src="https://source.unsplash.com/600x400/?hotel,luxury" alt="Hotel 1">
-      <h3>Luxury Stay Resort</h3>
-      <p>⭐ 4.8 | ₹6,000/night</p>
-    </div>
+@pytest.fixture
+def client():
+    """Create a Flask test client"""
+    app.testing = True
+    with app.test_client() as client:
+        yield client
 
-    <div class="hotel-card" onclick="location.href='hotel2.html'">
-      <img src="https://source.unsplash.com/600x400/?beach,hotel" alt="Hotel 2">
-      <h3>Sea View Paradise</h3>
-      <p>⭐ 4.6 | ₹5,200/night</p>
-    </div>
 
-    <div class="hotel-card" onclick="location.href='hotel3.html'">
-      <img src="https://source.unsplash.com/600x400/?mountain,resort" alt="Hotel 3">
-      <h3>Mountain Retreat</h3>
-      <p>⭐ 4.9 | ₹7,000/night</p>
-    </div>
-  </section>
+def test_home_route_status(client):
+    """Check that the home page loads successfully"""
+    response = client.get('/')
+    assert response.status_code == 200
 
-  <footer>
-    <p>© 2025 Airbnb Clone. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+
+def test_home_page_content(client):
+    """Verify that the greeting page shows correct text"""
+    response = client.get('/')
+    html = response.data.decode('utf-8')
+    assert "Welcome to Airbnb" in html
+    assert "Luxury Stay Resort" in html
+    assert "Sea View Paradise" in html
+    assert "Mountain Retreat" in html
