@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb Clone - Home</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+        }
+
+        header h1 {
+            color: #FF5A5F;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #FF5A5F;
+        }
+
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1505691723518-36a0f6733a2e');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .listings {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .card-content p {
+            margin: 5px 0 0;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Airbnb Clone</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/listings">Listings</a>
+            <a href="/login">Login</a>
+            <a href="/register">Sign Up</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        Find your next stay.
+    </div>
+
+    <section class="listings">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511" alt="Beach House">
+            <div class="card-content">
+                <h3>Cozy Beach House</h3>
+                <p>Miami, Florida · $250/night</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb" alt="City Apartment">
+            <div class="card-content">
+                <h3>Modern Apartment</h3>
+                <p>New York City · $180/night</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Cabin in Woods">
+            <div class="card-content">
+                <h3>Cabin in the Woods</h3>
+                <p>Asheville, NC · $130/night</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
